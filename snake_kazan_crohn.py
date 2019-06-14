@@ -17,12 +17,17 @@ print(samples)
 #trim_wc = '/data6/bio/TFM/datasets/kazancrohn/reads/raw__tmtic_def1/{sample}/{sample}_R1.fastq.gz'
 mp_wc = '/data10/bio/metagenomics/KazanCrohn/taxa/raw__tmtic_def1/mp2__def/{sample}/{sample}.mp2'
 #megahit_wc = os.path.join(asm_dir, 'mh__def/kazancrohn/{sample}/raw__tmtic_def1/final_contigs.fa')
+ms_wc = '/data10/bio/metagenomics/KazanCrohn/assembly/metaspades/raw__tmtic_def1/{sample}/contigs.fasta'
+filt_hum_wc = '/data10/bio/metagenomics/KazanCrohn/reads/raw__tmtic_def1__rmhum_bbmap/{sample}/{sample}_R1.fastq.gz'
+
 
 i_want = []
 
 i_want.append(expand(mp_wc, sample=samples))
-
+i_want.append(expand(ms_wc, sample=samples))
+i_want.append(expand(filt_hum_wc , sample = samples))
 rule give_me_all:
 	input:i_want
 
 
+## quququq
