@@ -22,7 +22,8 @@ task_id=task_id, rule_name=rule_name, in_list=in_list, out_list=out_list, status
     
     
 snakefiles = './'
-results    = '../../results/'
+results    = '/data7a/bio/runs-manolov/assnake/results/'
+#results    = '../../results/'
 
 include: results + 'metaphlan2/metaphlan2.py'
 include: results + 'megahit/megahit_cross.py'
