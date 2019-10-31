@@ -10,7 +10,7 @@ rule remove_human_bbmap:
 	outlog = "{prefix}/{df}/reads/{preproc}__rmhum_bbmap/{sample}/{sample}.outlog"
     threads: 8
     conda: '../bbmap/bbmap_env.yaml'
-    shell: ('''bbmap.sh minid=0.95 maxindel=3 bwr=0.16 bw=12 quickmatch fast minhits=2 path={params.prefix} qtrim=rl trimq=10 untrim -Xmx23g in={input.r1} in2={input.r2} outu={output.clean} -t={threads} printunmappedcount=t > {params.outlog}''')
+    shell: ('''{config[bbmap.bin]} minid=0.95 maxindel=3 bwr=0.16 bw=12 quickmatch fast minhits=2 path={params.prefix} qtrim=rl trimq=10 untrim -Xmx23g in={input.r1} in2={input.r2} outu={output.clean} -t={threads} printunmappedcount=t 2>&1 | tee {params.outlog}''')
 
 #reformat.sh in=clean.fq out1=clean_R1.fq out2=clean_R2.fq
 
